@@ -9,8 +9,14 @@ import java.io.File;
 public class CertificationEntity {
     @Id
     private Integer id;
-
     private File FileName;
+    public Integer getId() {
+        return id;
+    }
+
+    public File getFileName() {
+        return FileName;
+    }
 
 
     public CertificationEntity(Integer id, File FileName) {
