@@ -1,10 +1,93 @@
 package com.ada.jobservice.entities;
 
+import com.ada.jobservice.entities.enums.CompanyDomain;
+import com.ada.jobservice.entities.enums.CompanySector;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document("company")
 public class CompanyEntity {
+    private Long id;
+    private String ninea;
+    private String denomination;
+    private String description;
+    private CompanySector sector;
+    private CompanyDomain domain;
+    private String headquaters;
+    private  String officePhone;
 
+    public CompanyEntity(Long id, String ninea, String denomination, String description, CompanySector sector, CompanyDomain domain, String headquaters, String officePhone) {
+        this.id = id;
+        this.ninea = ninea;
+        this.denomination = denomination;
+        this.description = description;
+        this.sector = sector;
+        this.domain = domain;
+        this.headquaters = headquaters;
+        this.officePhone = officePhone;
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNinea() {
+        return ninea;
+    }
+
+    public void setNinea(String ninea) {
+        this.ninea = ninea;
+    }
+
+    public String getDenomination() {
+        return denomination;
+    }
+
+    public void setDenomination(String denomination) {
+        this.denomination = denomination;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public CompanySector getSector() {
+        return sector;
+    }
+
+    public void setSector(CompanySector sector) {
+        this.sector = sector;
+    }
+
+    public CompanyDomain getDomain() {
+        return domain;
+    }
+
+    public void setDomain(CompanyDomain domain) {
+        this.domain = domain;
+    }
+
+    public String getHeadquaters() {
+        return headquaters;
+    }
+
+    public void setHeadquaters(String headquaters) {
+        this.headquaters = headquaters;
+    }
+
+    public String getOfficePhone() {
+        return officePhone;
+    }
+
+    public void setOfficePhone(String officePhone) {
+        this.officePhone = officePhone;
+    }
 }
