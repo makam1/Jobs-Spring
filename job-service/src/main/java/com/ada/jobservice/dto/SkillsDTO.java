@@ -1,17 +1,17 @@
-package com.ada.jobservice.entities;
+package com.ada.jobservice.dto;
 
-import org.springframework.data.annotation.Id;
-
-public class SkillsEntity {
-    @Id
+public class SkillsDTO {
     private Long id;
     private String name;
     private Integer level;
 
-    public SkillsEntity(Long id, String name, Integer level) {
+    public SkillsDTO(Long id, String name, Integer level) {
         this.id = id;
         this.name = name;
         this.level = level;
+    }
+
+    public SkillsDTO() {
     }
 
     public Long getId() {

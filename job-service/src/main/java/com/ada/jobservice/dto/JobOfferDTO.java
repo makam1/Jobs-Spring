@@ -1,12 +1,11 @@
-package com.ada.jobservice.entities;
+package com.ada.jobservice.dto;
 
+import com.ada.jobservice.entities.SkillsEntity;
 import com.ada.jobservice.entities.enums.ContractType;
-import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-public class JobOfferEntity {
-    @Id
+public class JobOfferDTO {
     private Long id;
     private String title;
     private String companyName;
@@ -18,7 +17,7 @@ public class JobOfferEntity {
     private Long maxSalary;
     private String description;
 
-    public JobOfferEntity(Long id, String title, String companyName, String companyAddress, Date limitDate, ContractType contractType, SkillsEntity requiredSkills, Long minSalary, Long maxSalary, String description) {
+    public JobOfferDTO(Long id, String title, String companyName, String companyAddress, Date limitDate, ContractType contractType, SkillsEntity requiredSkills, Long minSalary, Long maxSalary, String description) {
         this.id = id;
         this.title = title;
         this.companyName = companyName;
@@ -109,5 +108,7 @@ public class JobOfferEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public JobOfferDTO() {
     }
 }

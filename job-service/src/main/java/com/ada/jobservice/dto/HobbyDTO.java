@@ -1,16 +1,15 @@
-package com.ada.jobservice.entities;
+package com.ada.jobservice.dto;
 
-import org.springframework.data.annotation.Id;
-
-public class HobbiesEntity {
-
-     @Id
+public class HobbyDTO {
     private Long id;
     private  String name;
 
-    public HobbiesEntity(Long id, String name) {
+    public HobbyDTO(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public HobbyDTO() {
     }
 
     public Long getId() {

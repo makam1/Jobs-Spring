@@ -1,17 +1,19 @@
-package com.ada.jobservice.entities;
+package com.ada.jobservice.dto;
 
-import org.springframework.data.annotation.Id;
+import com.ada.jobservice.entities.enums.LangageLevel;
 
-public class SkillsEntity {
-    @Id
+public class LangageDTO {
     private Long id;
     private String name;
-    private Integer level;
+    private LangageLevel level;
 
-    public SkillsEntity(Long id, String name, Integer level) {
+    public LangageDTO(Long id, String name, LangageLevel level) {
         this.id = id;
         this.name = name;
         this.level = level;
+    }
+
+    public LangageDTO() {
     }
 
     public Long getId() {
@@ -30,11 +32,11 @@ public class SkillsEntity {
         this.name = name;
     }
 
-    public Integer getLevel() {
+    public LangageLevel getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(LangageLevel level) {
         this.level = level;
     }
 }

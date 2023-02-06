@@ -1,28 +1,25 @@
-package com.ada.jobservice.entities;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.ada.jobservice.dto;
 
 import java.util.Date;
 
-@Document("experience")
-public class ExperienceEntity {
-
-    @Id
+public class Experience {
     private Long id;
-     private Date startDate;
-     private Date endDate;
-     private String function;
-     private String companyName;
-     private String realisation;
+    private Date startDate;
+    private Date endDate;
+    private String function;
+    private String companyName;
+    private String realisation;
 
-    public ExperienceEntity(Long id,Date startDate, Date endDate, String function, String companyName, String realisation) {
+    public Experience(Long id,Date startDate, Date endDate, String function, String companyName, String realisation) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.function = function;
         this.companyName = companyName;
         this.realisation = realisation;
         this.id=id;
+    }
+
+    public Experience() {
     }
 
     public Date getStartDate() {
