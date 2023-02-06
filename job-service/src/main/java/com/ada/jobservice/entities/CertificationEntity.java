@@ -8,9 +8,9 @@ import java.io.File;
 @Document("certification")
 public class CertificationEntity {
     @Id
-    private Integer id;
+    private Long id;
     private File FileName;
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -18,8 +18,15 @@ public class CertificationEntity {
         return FileName;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public CertificationEntity(Integer id, File FileName) {
+    public void setFileName(File fileName) {
+        FileName = fileName;
+    }
+
+    public CertificationEntity(Long id, File FileName) {
         super();
         this.id = id;
         this.FileName = FileName;

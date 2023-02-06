@@ -1,13 +1,8 @@
-package com.ada.jobservice.entities;
+package com.ada.jobservice.dto;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.Id;
 import java.util.Date;
 
-@Document("formation")
-public class FormationEntity {
-    @Id
+public class FormationDTO {
     private Long id;
     private String degree;
     private String  name;
@@ -16,7 +11,10 @@ public class FormationEntity {
     private Date startDate;
     private Date endDate;
 
-    public FormationEntity(Long id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
+    public FormationDTO() {
+    }
+
+    public FormationDTO(Long id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
         this.id = id;
         this.degree = degree;
         this.name = name;
@@ -80,4 +78,5 @@ public class FormationEntity {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }}
+    }
+}
