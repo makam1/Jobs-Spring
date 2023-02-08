@@ -11,18 +11,15 @@ public class UserDto {
 
     private String email;
 
-    private String password;
-
     private UserRole role;
 
     public UserDto() {
     }
 
-    public UserDto(String firstName, String lastName, String email, String password, UserRole role) {
+    public UserDto(String firstName, String lastName, String email, UserRole role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.role = role;
     }
 
@@ -56,14 +53,6 @@ public class UserDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public UserRole getRole() {
