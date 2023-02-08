@@ -53,7 +53,7 @@ public class UserController {
             return userService.findByEmail(email);
     }
 
-    @GetMapping("/{role}")
+    @GetMapping("/role/{role}")
     public List<User> getUsersByRole(@PathVariable("role") String role) {
             return userService.findByRole(role);
     }

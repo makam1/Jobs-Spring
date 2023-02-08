@@ -1,5 +1,7 @@
 package com.ada.userservice.entities;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,10 +12,13 @@ public class User {
   @Id
   private String id;
 
+  @NotBlank(message="Please enter a firstname")
   private String firstName;
 
+  @NotBlank(message="Please enter a lastname")
   private String lastName;
 
+  @NotBlank(message="Please enter a email address")
   private String email;
 
   private UserRole role;
@@ -33,14 +38,6 @@ public class User {
     this.id = id;
   }
 
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
   public String getFirstName() {
     return firstName;
   }
@@ -55,6 +52,18 @@ public class User {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public UserRole getRole() {
+    return role;
   }
 
   public void setRole(UserRole role) {
