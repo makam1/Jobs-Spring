@@ -1,18 +1,9 @@
-package com.ada.jobservice.entities;
-
-import com.ada.jobservice.entities.enums.CompanyDomain;
-import com.ada.jobservice.entities.enums.CompanySector;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.ada.jobservice.dto;
 
 import com.ada.jobservice.entities.enums.CompanyDomain;
 import com.ada.jobservice.entities.enums.CompanySector;
 
-
-@Document("company")
-public class CompanyEntity {
-
-    @Id
+public class CompanyDTO {
     private Long id;
     private String ninea;
     private String denomination;
@@ -22,7 +13,10 @@ public class CompanyEntity {
     private String headquaters;
     private  String officePhone;
 
-    public CompanyEntity(Long id, String ninea, String denomination, String description, CompanySector sector, CompanyDomain domain, String headquaters, String officePhone) {
+    public CompanyDTO() {
+    }
+
+    public CompanyDTO(Long id, String ninea, String denomination, String description, CompanySector sector, CompanyDomain domain, String headquaters, String officePhone) {
         this.id = id;
         this.ninea = ninea;
         this.denomination = denomination;
