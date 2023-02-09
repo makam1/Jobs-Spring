@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ada.userservice.dto.UserDto;
 import com.ada.userservice.entities.User;
 import com.ada.userservice.services.UserService;
 
@@ -29,32 +30,32 @@ public class UserController {
 
     @PostMapping("")
     public User addUser(@RequestBody @Valid User user) {
-        return userService.save(user);
+        return userService.addUser(user);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody @Valid User user) {
-        return userService.update(user);
+    public User updateUser(@RequestBody @Valid User user, @PathVariable("id") String userId) {
+        return userService.updateUser(user, userId);
     }
     
     
     @GetMapping("")
-    public List<User> getUsers() {
-        return userService.getUsers();
+    public List<UserDto> findAll() {
+        return userService.findAll();
     }
     
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable("id") String id) {
+    public UserDto getUserById(@PathVariable("id") String id) {
             return userService.findById(id);
     }
 
-    @GetMapping("/{email}")
-    public User getUserByEmail(@PathVariable("email") String email) {
+    @GetMapping("/email/{email}")
+    public UserDto getUserByEmail(@PathVariable("email") String email) {
             return userService.findByEmail(email);
     }
 
     @GetMapping("/role/{role}")
-    public List<User> getUsersByRole(@PathVariable("role") String role) {
+    public List<UserDto> findAllByRole(@PathVariable("role") String role) {
             return userService.findByRole(role);
     }
     
