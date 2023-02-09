@@ -34,8 +34,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody @Valid User user, @PathVariable("id") String userId) {
-        return userService.updateUser(user, userId);
+    public User updateUser(@RequestBody @Valid User user, @PathVariable String id) {
+        return userService.updateUser(user, id);
     }
     
     
@@ -45,17 +45,17 @@ public class UserController {
     }
     
     @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable("id") String id) {
+    public UserDto getUserById(@PathVariable String id) {
             return userService.findById(id);
     }
 
-    @GetMapping("/email/{email}")
-    public UserDto getUserByEmail(@PathVariable("email") String email) {
+    @GetMapping("/email={email}")
+    public UserDto getUserByEmail(@PathVariable String email) {
             return userService.findByEmail(email);
     }
 
-    @GetMapping("/role/{role}")
-    public List<UserDto> findAllByRole(@PathVariable("role") String role) {
+    @GetMapping("/role={role}")
+    public List<UserDto> findAllByRole(@PathVariable String role) {
             return userService.findByRole(role);
     }
     

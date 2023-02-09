@@ -1,6 +1,7 @@
 package com.ada.userservice.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User addUser(User user) {
-        return this.userRepository.save(user);
+        return this.userRepository.insert(user);
     }
 
     @Override
@@ -58,9 +59,19 @@ public class UserServiceImpl implements UserService {
     // }
     
     @Override
-    public User updateUser(User user, String userId) {
-        user.setId(userId);
-        return this.userRepository.save(user);
+    public User updateUser(User user, String id) {
+        Optional<User> oldUser =  this.userRepository.findById(id);
+
+        if (oldUser.isPresent()) {
+            User updatedUser = oldUser.get();
+            updatedUser.setFirstName(user.getFirstName());
+            updatedUser.setLastName(user.getLastName());
+            updatedUser.setEmail(user.getEmail());
+            updatedUser.setRole(user.getRole());
+            return this.userRepository.save(updatedUser);
+        }
+
+        return null;//NOT FOUND
     }
 
     @Override
