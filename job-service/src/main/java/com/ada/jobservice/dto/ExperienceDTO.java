@@ -2,7 +2,7 @@ package com.ada.jobservice.dto;
 
 import java.util.Date;
 
-public class Experience {
+public class ExperienceDTO {
     private Long id;
     private Date startDate;
     private Date endDate;
@@ -10,7 +10,7 @@ public class Experience {
     private String companyName;
     private String realisation;
 
-    public Experience(Long id,Date startDate, Date endDate, String function, String companyName, String realisation) {
+    public ExperienceDTO(Long id, Date startDate, Date endDate, String function, String companyName, String realisation) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.function = function;
@@ -19,7 +19,7 @@ public class Experience {
         this.id=id;
     }
 
-    public Experience() {
+    public ExperienceDTO() {
     }
 
     public Date getStartDate() {

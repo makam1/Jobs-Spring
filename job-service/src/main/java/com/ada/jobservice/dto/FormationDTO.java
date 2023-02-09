@@ -3,7 +3,7 @@ package com.ada.jobservice.dto;
 import java.util.Date;
 
 public class FormationDTO {
-    private Long id;
+    private String id;
     private String degree;
     private String  name;
     private String schoolName;
@@ -14,7 +14,7 @@ public class FormationDTO {
     public FormationDTO() {
     }
 
-    public FormationDTO(Long id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
+    public FormationDTO(String id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
         this.id = id;
         this.degree = degree;
         this.name = name;
@@ -24,11 +24,11 @@ public class FormationDTO {
         this.endDate = endDate;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
