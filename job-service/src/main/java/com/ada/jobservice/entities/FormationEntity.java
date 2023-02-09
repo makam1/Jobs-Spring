@@ -8,7 +8,7 @@ import java.util.Date;
 @Document("formation")
 public class FormationEntity {
     @Id
-    private Long id;
+    private String id;
     private String degree;
     private String  name;
     private String schoolName;
@@ -16,7 +16,7 @@ public class FormationEntity {
     private Date startDate;
     private Date endDate;
 
-    public FormationEntity(Long id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
+    public FormationEntity(String id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
         this.id = id;
         this.degree = degree;
         this.name = name;
@@ -26,11 +26,11 @@ public class FormationEntity {
         this.endDate = endDate;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

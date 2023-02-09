@@ -1,5 +1,11 @@
 package com.ada.jobservice.mappers;
 
-public interface FormationMapper {
+import com.ada.jobservice.dto.FormationDTO;
+import com.ada.jobservice.entities.FormationEntity;
+import org.mapstruct.Mapper;
 
+@Mapper(componentModel = "spring")
+public interface FormationMapper {
+    FormationEntity toEntity(FormationDTO formationDTO);
+    FormationDTO toDto(FormationEntity formationEntity);
 }
