@@ -6,13 +6,14 @@ import com.ada.jobservice.entities.FormationEntity;
 import java.util.List;
 
 public interface Formationservice {
-    FormationDTO addFormation(FormationDTO formation);
 
-    FormationEntity editFormation(FormationEntity formation);
+    public List<FormationEntity> getFormations();
 
-    List<FormationEntity> formations();
+    public FormationEntity getFormationById(String id);
 
-    FormationEntity getFormation(Long id);
+    public FormationDTO createFormation(FormationDTO formationDTO);
 
-    void deleteFormation(Long id);
+    public FormationEntity updateFormation(String id, FormationEntity formationRequest);
+
+    public void deleteFormation(String id);
 }

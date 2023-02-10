@@ -1,15 +1,20 @@
 package com.ada.jobservice.services.CompanyService;
 
+import com.ada.jobservice.dto.CompanyDTO;
+import com.ada.jobservice.dto.FormationDTO;
+import com.ada.jobservice.entities.CompanyEntity;
+import com.ada.jobservice.entities.FormationEntity;
+
 import java.util.List;
 
-import com.ada.jobservice.entities.CompanyEntity;
-
 public interface CompanyService {
+    public List<CompanyEntity> getCompanies();
 
-	CompanyEntity addCompany (CompanyEntity company) ;
-	List<CompanyEntity> getCompany() ;
-	CompanyEntity getCompanyById(Integer id) ;
-	CompanyEntity editCompany(CompanyEntity company) ;
-	void deleteCompany(Integer id) ;
+    public CompanyEntity getCompanyById(String id);
+
+    public CompanyDTO createCompany(CompanyDTO companyDTO);
+
+    public CompanyEntity updateCompany(String id, CompanyEntity companyRequest);
+
+    public void deleteCompany(String id);
 }
-

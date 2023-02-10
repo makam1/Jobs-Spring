@@ -1,42 +1,72 @@
 package com.ada.jobservice.services.CompanyService;
 
-import java.util.List;
-
+import com.ada.jobservice.dto.CompanyDTO;
 import com.ada.jobservice.entities.CompanyEntity;
+import com.ada.jobservice.mappers.CompanyMapper;
 import com.ada.jobservice.repositories.CompanyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+
+import java.util.List;
+import java.util.Optional;
 
 public class CompanyServiceImpl implements CompanyService {
-	private final CompanyRepository repo ;
+    private final CompanyRepository companyRepository;
 
-	public CompanyServiceImpl(CompanyRepository repo ) {
-		this.repo = repo ;
-	}
-	
-	@Override
-	public CompanyEntity addCompany(CompanyEntity company) {
-		return repo.save(company);
-	}
+    private final CompanyMapper companyMapper;
 
-	@Override
-	public List<CompanyEntity> getCompany() {
-		return repo.findAll();
-	}
+    private final CompanyService companyService;
 
-	@Override
-	public CompanyEntity getCompanyById(Integer id) {
-		return repo.findById(id).get();
-	}
+    @Autowired
+    public CompanyServiceImpl(@Lazy CompanyService companyService, @Lazy CompanyRepository companyRepository, @Lazy CompanyMapper companyMapper) {
+        this.companyRepository = companyRepository;
+        this.companyMapper = companyMapper;
+        this.companyService = companyService;
+    }
+    @Override
+    public List<CompanyEntity> getCompanies() {
+        return companyRepository.findAll();
+    }
+    @Override
+    public CompanyEntity getCompanyById(String id) {
+        Optional<CompanyEntity> optionalCompany = companyRepository.findById(id);
+        return optionalCompany.get();
+    }
+    @Override
+    public CompanyDTO createCompany(CompanyDTO companyDTO) {
+        CompanyEntity companyEntity = companyMapper.toEntity(companyDTO);
+        // Sauvegarde du restaurant entité au niveau de la BDD
+        CompanyEntity companyEntityCreated = companyRepository.save(companyEntity);
+        // Conversion automatique de entité en dto
+        CompanyDTO companyDTO1 = companyMapper.toDto(companyEntityCreated);
+        // On retourne de dto crée
+        return companyDTO1;
+    }
 
-	@Override
-	public CompanyEntity editCompany(CompanyEntity company) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public CompanyEntity updateCompany(String id, CompanyEntity companyRequest) {
+        Optional<CompanyEntity> companyExist = companyRepository.findById(id);
 
-	@Override
-	public void deleteCompany(Integer id) {
-		repo.deleteById(id) ;
+        if (!companyExist.isPresent()) {
+            return null;
+        }
 
-	}
+        CompanyEntity companyEntity = companyExist.get();
 
+        companyEntity.setDenomination(companyRequest.getDenomination());
+        companyEntity.setDescription(companyRequest.getDescription());
+        companyEntity.setDomain(companyRequest.getDomain());
+        companyEntity.setNinea(companyRequest.getNinea());
+        companyEntity.setHeadquaters(companyRequest.getHeadquaters());
+        companyEntity.setOfficePhone(companyRequest.getOfficePhone());
+        companyEntity.setSector(companyRequest.getSector());
+
+        companyRepository.save(companyEntity);
+        return companyEntity;
+    }
+
+    @Override
+    public void deleteCompany(String id) {
+        companyRepository.deleteById(id);
+    }
 }
