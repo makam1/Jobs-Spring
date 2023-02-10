@@ -5,6 +5,9 @@ import com.ada.jobservice.entities.enums.CompanySector;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.ada.jobservice.entities.enums.CompanyDomain;
+import com.ada.jobservice.entities.enums.CompanySector;
+
 
 @Document("company")
 public class CompanyEntity {
