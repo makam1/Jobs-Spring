@@ -3,11 +3,11 @@ package com.ada.jobservice.dto;
 import com.ada.jobservice.entities.enums.LangageLevel;
 
 public class LangageDTO {
-    private Long id;
+    private String id;
     private String name;
     private LangageLevel level;
 
-    public LangageDTO(Long id, String name, LangageLevel level) {
+    public LangageDTO(String id, String name, LangageLevel level) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -16,11 +16,11 @@ public class LangageDTO {
     public LangageDTO() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

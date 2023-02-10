@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class CompanyEntity {
 
     @Id
-    private Long id;
+    private String id;
     private String ninea;
     private String denomination;
     private String description;
@@ -19,7 +19,7 @@ public class CompanyEntity {
     private String headquaters;
     private  String officePhone;
 
-    public CompanyEntity(Long id, String ninea, String denomination, String description, CompanySector sector, CompanyDomain domain, String headquaters, String officePhone) {
+    public CompanyEntity(String id, String ninea, String denomination, String description, CompanySector sector, CompanyDomain domain, String headquaters, String officePhone) {
         this.id = id;
         this.ninea = ninea;
         this.denomination = denomination;
@@ -30,11 +30,11 @@ public class CompanyEntity {
         this.officePhone = officePhone;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

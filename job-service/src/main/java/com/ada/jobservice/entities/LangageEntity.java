@@ -5,21 +5,21 @@ import org.springframework.data.annotation.Id;
 
 public class LangageEntity {
     @Id
-    private Long id;
+    private String id;
      private String name;
      private LangageLevel level;
 
-    public LangageEntity(Long id, String name, LangageLevel level) {
+    public LangageEntity(String id, String name, LangageLevel level) {
         this.id = id;
         this.name = name;
         this.level = level;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

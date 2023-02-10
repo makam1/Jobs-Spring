@@ -6,7 +6,7 @@ import com.ada.jobservice.entities.enums.ContractType;
 import java.util.Date;
 
 public class JobOfferDTO {
-    private Long id;
+    private String id;
     private String title;
     private String companyName;
     private String companyAddress;
@@ -17,7 +17,7 @@ public class JobOfferDTO {
     private Long maxSalary;
     private String description;
 
-    public JobOfferDTO(Long id, String title, String companyName, String companyAddress, Date limitDate, ContractType contractType, SkillsEntity requiredSkills, Long minSalary, Long maxSalary, String description) {
+    public JobOfferDTO(String id, String title, String companyName, String companyAddress, Date limitDate, ContractType contractType, SkillsEntity requiredSkills, Long minSalary, Long maxSalary, String description) {
         this.id = id;
         this.title = title;
         this.companyName = companyName;
@@ -30,11 +30,11 @@ public class JobOfferDTO {
         this.description = description;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

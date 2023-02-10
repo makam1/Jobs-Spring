@@ -5,7 +5,7 @@ import com.ada.jobservice.entities.*;
 import java.util.Date;
 
 public class ResumeDTO {
-        private Long id;
+        private String id;
         private Date dateOfBirth;
         private String title;
         private LangageEntity languages;
@@ -18,7 +18,7 @@ public class ResumeDTO {
     public ResumeDTO() {
     }
 
-    public ResumeDTO(Long id, Date dateOfBirth, String title, LangageEntity languages, FormationEntity formations, SkillsEntity skills, CertificationEntity certificats, ExperienceEntity experiences, HobbiesEntity hobbies) {
+    public ResumeDTO(String id, Date dateOfBirth, String title, LangageEntity languages, FormationEntity formations, SkillsEntity skills, CertificationEntity certificats, ExperienceEntity experiences, HobbiesEntity hobbies) {
             this.dateOfBirth = dateOfBirth;
             this.title = title;
             this.languages = languages;
@@ -30,7 +30,15 @@ public class ResumeDTO {
             this.id=id;
         }
 
-        public Date getDateOfBirth() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getDateOfBirth() {
             return dateOfBirth;
         }
 

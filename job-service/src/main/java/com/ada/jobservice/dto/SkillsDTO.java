@@ -1,11 +1,11 @@
 package com.ada.jobservice.dto;
 
 public class SkillsDTO {
-    private Long id;
+    private String id;
     private String name;
     private Integer level;
 
-    public SkillsDTO(Long id, String name, Integer level) {
+    public SkillsDTO(String id, String name, Integer level) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -14,11 +14,11 @@ public class SkillsDTO {
     public SkillsDTO() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
