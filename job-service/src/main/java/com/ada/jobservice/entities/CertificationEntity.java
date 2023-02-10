@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class CertificationEntity {
     @Id
     private Long id;
+    private String title ;
+    private String fileName ;
 
     public Long getId() {
         return id;
@@ -16,8 +18,26 @@ public class CertificationEntity {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    
 
-    public CertificationEntity(Long id) {
+    public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public CertificationEntity(Long id) {
         super();
         this.id = id;
     }
