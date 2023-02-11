@@ -1,39 +1,56 @@
 package com.ada.userservice.services;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ada.userservice.dto.UserDto;
 import com.ada.userservice.entities.User;
-import com.ada.userservice.entities.enums.UserRole;
 import com.ada.userservice.repositories.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+    public final UserRepository userRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
-    public UserServiceImpl (UserRepository userRepository) {
+    public UserServiceImpl (UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public  List<User> getUsers() {
-        return this.userRepository.findAll();
+    public User addUser(User user) {
+        return this.userRepository.insert(user);
     }
 
     @Override
-    public List<User> findByRole(String role){
-        return this.userRepository.findByRole(role);
+    public  List<UserDto> findAll() {
+        List<User> users = this.userRepository.findAll();
+        return users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserDto> findByRole(String role){
+        List<User> users = this.userRepository.findByRole(role);
+        return users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
     }
     
     @Override
-    public User findById(String id){
-        return this.userRepository.findById(id).get();
+    public UserDto findById(String id){
+        User user =  this.userRepository.findById(id).get();
+        UserDto userDto = this.modelMapper.map(user, UserDto.class);
+        return userDto;
     }
 
     @Override
-    public User findByEmail(String email) {
-        return this.userRepository.findByEmail(email);
+    public UserDto findByEmail(String email) {
+        Optional<User> user = this.userRepository.findByEmail(email);
+        return this.modelMapper.map(user, UserDto.class);
     }
     
     // @Override
@@ -42,17 +59,28 @@ public class UserServiceImpl implements UserService {
     // }
     
     @Override
-    public User save(User user) {
-        return this.userRepository.save(user);
-    }
+    public User updateUser(User user, String id) {
+        Optional<User> oldUser =  this.userRepository.findById(id);
 
-    @Override
-    public User update(User user) {
-        return this.userRepository.save(user);
+        if (oldUser.isPresent()) {
+            User updatedUser = oldUser.get();
+            updatedUser.setFirstName(user.getFirstName());
+            updatedUser.setLastName(user.getLastName());
+            updatedUser.setEmail(user.getEmail());
+            updatedUser.setRoles(user.getRoles());
+            return this.userRepository.save(updatedUser);
+        }
+
+        return null;//NOT FOUND
     }
 
     @Override
     public void delete(String id) {
-        this.userRepository.delete(findById(id));
+        this.userRepository.deleteById(id);
+    }
+
+    @Override
+    public Boolean existsEmail(String email){
+        return this.userRepository.existsEmail(email);
     }
 }

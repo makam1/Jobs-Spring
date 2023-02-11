@@ -2,20 +2,23 @@ package com.ada.userservice.services;
 
 import java.util.List;
 
+import com.ada.userservice.dto.UserDto;
 import com.ada.userservice.entities.User;
 
 public interface UserService {
-    List<User> getUsers();
+    List<UserDto> findAll();
 
-    User findById(String id);
+    UserDto findById(String id);
 
-    User findByEmail(String email);
+    UserDto findByEmail(String email);
     
-    List<User> findByRole(String role);
+    List<UserDto> findByRole(String role);
     
-    User save(User user);
+    User addUser(User user);
 
-    User update(User user);
+    User updateUser(User user, String id);
 
     void delete(String id);
+
+    Boolean existsEmail(String email);
 }
