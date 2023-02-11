@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findByEmail(String email) {
-        User user = this.userRepository.findByEmail(email);
+        Optional<User> user = this.userRepository.findByEmail(email);
         return this.modelMapper.map(user, UserDto.class);
     }
     
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
             updatedUser.setFirstName(user.getFirstName());
             updatedUser.setLastName(user.getLastName());
             updatedUser.setEmail(user.getEmail());
-            updatedUser.setRole(user.getRole());
+            updatedUser.setRoles(user.getRoles());
             return this.userRepository.save(updatedUser);
         }
 
@@ -77,5 +77,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(String id) {
         this.userRepository.deleteById(id);
+    }
+
+    @Override
+    public Boolean existsEmail(String email){
+        return this.userRepository.existsEmail(email);
     }
 }

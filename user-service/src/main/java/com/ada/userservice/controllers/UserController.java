@@ -28,10 +28,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("")
-    public User addUser(@RequestBody @Valid User user) {
-        return userService.addUser(user);
-    }
+    // @PostMapping("")
+    // public User addUser(@RequestBody @Valid User user) {
+    //     return userService.addUser(user);
+    // }
 
     @PutMapping("/{id}")
     public User updateUser(@RequestBody @Valid User user, @PathVariable String id) {

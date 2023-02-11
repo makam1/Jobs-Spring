@@ -19,4 +19,6 @@ public interface UserService {
     User updateUser(User user, String id);
 
     void delete(String id);
+
+    Boolean existsEmail(String email);
 }
