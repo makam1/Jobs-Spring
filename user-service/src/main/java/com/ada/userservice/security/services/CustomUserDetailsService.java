@@ -2,7 +2,6 @@ package com.ada.userservice.security.services;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.ada.userservice.entities.Role;
 import com.ada.userservice.entities.User;
-import com.ada.userservice.entities.enums.UserRole;
 import com.ada.userservice.repositories.UserRepository;
 
 @Service

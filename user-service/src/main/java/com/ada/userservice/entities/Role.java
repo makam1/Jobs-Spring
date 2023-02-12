@@ -30,6 +30,5 @@ public class Role {
                 name = UserRole.JOBSEEKER;
                 break;
         }
-        name = UserRole.ADMIN ;
     }
 }
