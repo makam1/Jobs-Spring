@@ -3,14 +3,14 @@ package com.ada.jobservice.dto;
 import java.util.Date;
 
 public class ExperienceDTO {
-    private Long id;
+    private String id;
     private Date startDate;
     private Date endDate;
     private String function;
     private String companyName;
     private String realisation;
 
-    public ExperienceDTO(Long id, Date startDate, Date endDate, String function, String companyName, String realisation) {
+    public ExperienceDTO(String id, Date startDate, Date endDate, String function, String companyName, String realisation) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.function = function;
@@ -20,6 +20,14 @@ public class ExperienceDTO {
     }
 
     public ExperienceDTO() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getStartDate() {
