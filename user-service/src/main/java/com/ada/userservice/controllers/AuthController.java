@@ -2,9 +2,11 @@ package com.ada.userservice.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,4 +67,12 @@ public class AuthController {
 
         return new ResponseEntity<>("User registered success!", HttpStatus.OK);
     }
+
+    @PostMapping("/logout")
+	@PreAuthorize("hasRole('JOBSEEKER') or hasRole('RECRUITER') or hasRole('ADMIN')")
+	public ResponseEntity<String> logoutUser() {
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		securityContext.setAuthentication(null);
+		return new ResponseEntity<>("logout successful", HttpStatus.OK);
+	}
 }
