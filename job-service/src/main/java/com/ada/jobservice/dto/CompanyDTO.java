@@ -4,7 +4,7 @@ import com.ada.jobservice.entities.enums.CompanyDomain;
 import com.ada.jobservice.entities.enums.CompanySector;
 
 public class CompanyDTO {
-    private Long id;
+    private String id;
     private String ninea;
     private String denomination;
     private String description;
@@ -16,7 +16,7 @@ public class CompanyDTO {
     public CompanyDTO() {
     }
 
-    public CompanyDTO(Long id, String ninea, String denomination, String description, CompanySector sector, CompanyDomain domain, String headquaters, String officePhone) {
+    public CompanyDTO(String id, String ninea, String denomination, String description, CompanySector sector, CompanyDomain domain, String headquaters, String officePhone) {
         this.id = id;
         this.ninea = ninea;
         this.denomination = denomination;
@@ -27,11 +27,11 @@ public class CompanyDTO {
         this.officePhone = officePhone;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

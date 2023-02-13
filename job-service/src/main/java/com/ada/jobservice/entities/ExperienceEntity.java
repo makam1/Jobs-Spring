@@ -9,20 +9,28 @@ import java.util.Date;
 public class ExperienceEntity {
 
     @Id
-    private Long id;
+    private String id;
      private Date startDate;
      private Date endDate;
      private String function;
      private String companyName;
      private String realisation;
 
-    public ExperienceEntity(Long id,Date startDate, Date endDate, String function, String companyName, String realisation) {
+    public ExperienceEntity(String id,Date startDate, Date endDate, String function, String companyName, String realisation) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.function = function;
         this.companyName = companyName;
         this.realisation = realisation;
         this.id=id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getStartDate() {

@@ -7,7 +7,7 @@ import java.util.Date;
 public class ResumeEntity {
 
     @Id
-    private Long id;
+    private String id;
      private Date dateOfBirth;
      private String title;
     private LangageEntity languages;
@@ -17,7 +17,7 @@ public class ResumeEntity {
     private ExperienceEntity experiences;
     private HobbiesEntity hobbies;
 
-    public ResumeEntity(Long id,Date dateOfBirth, String title, LangageEntity languages, FormationEntity formations, SkillsEntity skills, CertificationEntity certificats, ExperienceEntity experiences, HobbiesEntity hobbies) {
+    public ResumeEntity(String id,Date dateOfBirth, String title, LangageEntity languages, FormationEntity formations, SkillsEntity skills, CertificationEntity certificats, ExperienceEntity experiences, HobbiesEntity hobbies) {
         this.dateOfBirth = dateOfBirth;
         this.title = title;
         this.languages = languages;
@@ -27,6 +27,14 @@ public class ResumeEntity {
         this.experiences = experiences;
         this.hobbies = hobbies;
         this.id=id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getDateOfBirth() {

@@ -1,10 +1,10 @@
 package com.ada.jobservice.dto;
 
 public class HobbyDTO {
-    private Long id;
+    private String id;
     private  String name;
 
-    public HobbyDTO(Long id, String name) {
+    public HobbyDTO(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -12,11 +12,11 @@ public class HobbyDTO {
     public HobbyDTO() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class JobOfferEntity {
     @Id
-    private Long id;
+    private String id;
     private String title;
     private String companyName;
     private String companyAddress;
@@ -18,7 +18,7 @@ public class JobOfferEntity {
     private Long maxSalary;
     private String description;
 
-    public JobOfferEntity(Long id, String title, String companyName, String companyAddress, Date limitDate, ContractType contractType, SkillsEntity requiredSkills, Long minSalary, Long maxSalary, String description) {
+    public JobOfferEntity(String id, String title, String companyName, String companyAddress, Date limitDate, ContractType contractType, SkillsEntity requiredSkills, Long minSalary, Long maxSalary, String description) {
         this.id = id;
         this.title = title;
         this.companyName = companyName;
@@ -31,11 +31,11 @@ public class JobOfferEntity {
         this.description = description;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

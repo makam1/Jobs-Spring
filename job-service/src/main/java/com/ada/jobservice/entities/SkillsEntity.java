@@ -4,21 +4,21 @@ import org.springframework.data.annotation.Id;
 
 public class SkillsEntity {
     @Id
-    private Long id;
+    private String id;
     private String name;
     private Integer level;
 
-    public SkillsEntity(Long id, String name, Integer level) {
+    public SkillsEntity(String id, String name, Integer level) {
         this.id = id;
         this.name = name;
         this.level = level;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
