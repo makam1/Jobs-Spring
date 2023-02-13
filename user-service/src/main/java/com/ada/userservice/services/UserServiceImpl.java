@@ -2,6 +2,8 @@ package com.ada.userservice.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -9,22 +11,61 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ada.userservice.dto.UserDto;
+
+import com.ada.userservice.entities.Role;
 import com.ada.userservice.entities.User;
+
+import com.ada.userservice.entities.enums.UserRole ;
+
+import com.ada.userservice.repositories.RoleRepository;
 import com.ada.userservice.repositories.UserRepository;
+
 
 @Service
 public class UserServiceImpl implements UserService {
     public final UserRepository userRepository;
+    public final RoleRepository roleRepository;
     @Autowired
     private ModelMapper modelMapper;
 
-    public UserServiceImpl (UserRepository userRepository, ModelMapper modelMapper) {
+    public UserServiceImpl (UserRepository userRepository, RoleRepository roleRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.modelMapper = modelMapper;
     }
 
     @Override
-    public User addUser(User user) {
+    public User addUser(User RegisterUser) {
+        Set<Role> ListRoles = RegisterUser.getRoles();
+		Set<Role> roles = new HashSet<>();
+
+        if (ListRoles == null) {
+			Role userRole = roleRepository.findByName(UserRole.JOBSEEKER.toString())
+					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+			roles.add(userRole);
+		} else {
+			ListRoles.forEach(role -> {
+				switch (role.toString()) {
+				case "ADMIN":
+					Role adminRole = roleRepository.findByName(UserRole.ADMIN.toString())
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(adminRole);
+
+					break;
+				case "RECRUITER":
+					Role modRole = roleRepository.findByName(UserRole.RECRUITER.toString())
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(modRole);
+
+					break;
+				default:
+					Role userRole = roleRepository.findByName(UserRole.JOBSEEKER.toString())
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(userRole);
+				}
+			});
+		}
+        User user = new User(RegisterUser.getFirstName(), RegisterUser.getLastName(), RegisterUser.getEmail(), RegisterUser.getPassword(), roles);
         return this.userRepository.insert(user);
     }
 
@@ -52,11 +93,6 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = this.userRepository.findByEmail(email);
         return this.modelMapper.map(user, UserDto.class);
     }
-    
-    // @Override
-    // public <User> findByName(String name) {
-    //     return this.userRepository.findByName(name);
-    // }
     
     @Override
     public User updateUser(User user, String id) {
