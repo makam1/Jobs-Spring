@@ -1,7 +1,7 @@
 package com.ada.userservice.dto;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import com.ada.userservice.entities.Role;
 import lombok.Data;
@@ -17,6 +17,6 @@ public class UserDto {
 
     private String email;
 
-    private List<Role> roles = new ArrayList<Role>();
+    private Set<Role> roles = new HashSet<>();
 
 }
