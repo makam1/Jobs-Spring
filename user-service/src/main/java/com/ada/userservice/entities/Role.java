@@ -18,16 +18,20 @@ public class Role {
 
     private UserRole name;
 
+    public Role() {
+
+    }
+
     public Role(String role) {
         switch (role) {
             case "ADMIN":
-                name = UserRole.ADMIN;
+                this.name = UserRole.ADMIN;
                 break;
-            case "RECRUITOR":
-                name = UserRole.RECRUITOR;
+            case "RECRUITER":
+                this.name = UserRole.RECRUITER;
                 break;
             default:
-                name = UserRole.JOBSEEKER;
+                this.name = UserRole.JOBSEEKER;
                 break;
         }
     }

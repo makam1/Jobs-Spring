@@ -15,22 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ada.userservice.dto.AuthResponseDto;
 import com.ada.userservice.dto.LoginDto;
 import com.ada.userservice.dto.RegisterDto;
+import com.ada.userservice.dto.UserDto;
 import com.ada.userservice.entities.User;
-import com.ada.userservice.repositories.UserRepository;
 import com.ada.userservice.security.jwt.JWTGenerator;
+import com.ada.userservice.services.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
     private AuthenticationManager authenticationManager;
-    private UserRepository userRepository;
+    private UserService userService;
     private PasswordEncoder passwordEncoder;
     private JWTGenerator jwtGenerator;
 
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-                          PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator) {
+    public AuthController(AuthenticationManager authenticationManager, UserService userService, 
+            PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
+        this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.jwtGenerator = jwtGenerator;
     }
@@ -43,12 +44,13 @@ public class AuthController {
                 loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-        return new ResponseEntity<>(new AuthResponseDto(token), HttpStatus.OK);
+        UserDto user = userService.findByEmail(loginDto.getEmail());
+        return new ResponseEntity<>(new AuthResponseDto(token, user), HttpStatus.OK);
     }
 
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
-        if (!userRepository.findByEmail(registerDto.getEmail()).isEmpty()) {
+        if (userService.findByEmail(registerDto.getEmail()) != null) {
             return new ResponseEntity<>("Email is taken!", HttpStatus.BAD_REQUEST);
         }
 
@@ -59,7 +61,7 @@ public class AuthController {
         user.setLastName(registerDto.getLastName());
         user.setRoles(registerDto.getRoles());
 
-        userRepository.save(user);
+        userService.addUser(user);
 
         return new ResponseEntity<>("User registered success!", HttpStatus.OK);
     }

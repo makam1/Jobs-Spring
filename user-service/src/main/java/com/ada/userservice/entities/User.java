@@ -2,7 +2,8 @@ package com.ada.userservice.entities;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotBlank;
@@ -10,9 +11,8 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import com.ada.userservice.entities.enums.UserRole;
 
 import lombok.Data;
 
@@ -28,17 +28,18 @@ public class User implements UserDetails {
   // @NotBlank(message="Please enter a lastname")
   private String lastName;
 
-  @NotBlank(message="Please enter a email address")
+  @NotBlank(message = "Please enter a email address")
   private String email;
 
   private String password;
 
-  private List<Role> roles = new ArrayList<>();
+  private Set<Role> roles = new HashSet<>();
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     // TODO Auto-generated method stub
-    return null;
+    return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName().toString()))
+        .collect(Collectors.toList());
   }
 
   @Override
@@ -71,15 +72,21 @@ public class User implements UserDetails {
     return true;
   }
 
-  public User(String email, String password, Collection<GrantedAuthority> authorities) {    
+  public User(String email, String password, Collection<GrantedAuthority> authorities) {
     this.email = email;
     this.password = password;
-    this.roles = authorities.stream()
-    .map(grantedAuthority -> new Role(grantedAuthority.toString()))
-    .collect(Collectors.toList());
   }
 
-public User() {
-}
+  public User() {
+
+  }
+
+  public User(String firstName, String lastName, String email, String password, Set<Role> roles) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+    this.roles = roles;
+  }
 
 }
