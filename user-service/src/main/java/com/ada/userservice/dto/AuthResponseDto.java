@@ -9,6 +9,7 @@ import lombok.Data;
 
 @Data
 public class AuthResponseDto {
+    private String id;
     private String accessToken;
     private String tokenType = "Bearer ";
     private String firstanme;
@@ -17,6 +18,7 @@ public class AuthResponseDto {
     private Set<Role> roles;
 
     public AuthResponseDto(String accessToken, UserDto user) {
+        this.id = user.getId();
         this.accessToken = accessToken;
         this.firstanme = user.getFirstName();
         this.lastname = user.getLastName();
