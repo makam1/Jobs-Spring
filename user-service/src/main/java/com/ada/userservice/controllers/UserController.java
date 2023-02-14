@@ -19,18 +19,13 @@ import com.ada.userservice.services.UserService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/users")
 public class UserController {
     private UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-    // @PostMapping("")
-    // public User addUser(@RequestBody @Valid User user) {
-    //     return userService.addUser(user);
-    // }
 
     @PutMapping("/{id}")
     public User updateUser(@RequestBody @Valid User user, @PathVariable String id) {

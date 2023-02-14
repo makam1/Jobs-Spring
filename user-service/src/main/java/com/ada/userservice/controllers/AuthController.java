@@ -21,7 +21,7 @@ import com.ada.userservice.security.jwt.JWTGenerator;
 import com.ada.userservice.services.UserService;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
     private AuthenticationManager authenticationManager;
     private UserService userService;
