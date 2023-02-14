@@ -8,19 +8,19 @@ public class ResumeDTO {
         private String id;
         private Date dateOfBirth;
         private String title;
-        private LangageEntity languages;
-        private FormationEntity formations;
-        private SkillsEntity skills;
-        private CertificationEntity certificats;
-        private ExperienceEntity experiences;
-        private HobbiesEntity hobbies;
+        private String languages;
+        private String formations;
+        private String skills;
+        private String certificats;
+        private String experiences;
+        private String hobbies;
         private String user;
 
 
     public ResumeDTO() {
     }
 
-    public ResumeDTO(String user,String id, Date dateOfBirth, String title, LangageEntity languages, FormationEntity formations, SkillsEntity skills, CertificationEntity certificats, ExperienceEntity experiences, HobbiesEntity hobbies) {
+    public ResumeDTO(String user,String id, Date dateOfBirth, String title, String languages, String formations, String skills, String certificats, String experiences, String hobbies) {
             this.dateOfBirth = dateOfBirth;
             this.title = title;
             this.languages = languages;
@@ -65,51 +65,51 @@ public class ResumeDTO {
             this.title = title;
         }
 
-        public LangageEntity getLanguages() {
+        public String getLanguages() {
             return languages;
         }
 
-        public void setLanguages(LangageEntity languages) {
+        public void setLanguages(String languages) {
             this.languages = languages;
         }
 
-        public FormationEntity getFormations() {
+        public String getFormations() {
             return formations;
         }
 
-        public void setFormations(FormationEntity formations) {
+        public void setFormations(String String) {
             this.formations = formations;
         }
 
-        public SkillsEntity getSkills() {
+        public String getSkills() {
             return skills;
         }
 
-        public void setSkills(SkillsEntity skills) {
+        public void setSkills(String skills) {
             this.skills = skills;
         }
 
-        public CertificationEntity getCertificats() {
+        public String getCertificats() {
             return certificats;
         }
 
-        public void setCertificats(CertificationEntity certificats) {
+        public void setCertificats(String certificats) {
             this.certificats = certificats;
         }
 
-        public ExperienceEntity getExperiences() {
+        public String getExperiences() {
             return experiences;
         }
 
-        public void setExperiences(ExperienceEntity experiences) {
+        public void setExperiences(String experiences) {
             this.experiences = experiences;
         }
 
-        public HobbiesEntity getHobbies() {
+        public String getHobbies() {
             return hobbies;
         }
 
-        public void setHobbies(HobbiesEntity hobbies) {
+        public void setHobbies(String hobbies) {
             this.hobbies = hobbies;
         }
 
