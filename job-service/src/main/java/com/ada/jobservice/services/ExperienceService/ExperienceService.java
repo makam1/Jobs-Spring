@@ -6,7 +6,7 @@ import com.ada.jobservice.entities.ExperienceEntity;
 import java.util.List;
 
 public interface ExperienceService {
-    public List<ExperienceEntity> getExperiences();
+    public List<ExperienceEntity> getExperiences(String user);
 
     public ExperienceEntity getExperienceById(String id);
 

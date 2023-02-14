@@ -25,12 +25,12 @@ public class LangageController {
     public LangageDTO createLangage(@RequestBody LangageDTO langage) {
         return langageService.createLangage(langage);
     }
-    @GetMapping("/langages")
-    public List<LangageEntity> getLangages() {
-        return langageService.getLangages();
+    @GetMapping("/langages/{user}")
+    public List<LangageEntity> getLangages(@PathVariable String user) {
+        return langageService.getLangages(user);
     }
 
-    @GetMapping("/langages/{id}")
+    @GetMapping("/langage/{id}")
     public LangageEntity getLangage(@PathVariable String id) {
         return langageService.getLangageById(id);
     }

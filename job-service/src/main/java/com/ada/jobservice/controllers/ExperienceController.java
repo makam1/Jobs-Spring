@@ -27,12 +27,11 @@ public class ExperienceController {
     public ExperienceDTO createExperience(@RequestBody ExperienceDTO experience) {
         return experienceService.createExperience(experience);
     }
-    @GetMapping("/experiences")
-    public List<ExperienceEntity> getExperiences() {
-        return experienceService.getExperiences();
+    @GetMapping("/experiences/{user}")
+    public List<ExperienceEntity> getExperiences(@PathVariable String user) {
+        return experienceService.getExperiences(user);
     }
-
-    @GetMapping("/experiences/{id}")
+    @GetMapping("/experience/{id}")
     public ExperienceEntity getExperience(@PathVariable String id) {
         return experienceService.getExperienceById(id);
     }

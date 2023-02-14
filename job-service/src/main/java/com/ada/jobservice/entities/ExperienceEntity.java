@@ -15,14 +15,24 @@ public class ExperienceEntity {
      private String function;
      private String companyName;
      private String realisation;
+     private String user;
 
-    public ExperienceEntity(String id,Date startDate, Date endDate, String function, String companyName, String realisation) {
+    public ExperienceEntity(String user,String id,Date startDate, Date endDate, String function, String companyName, String realisation) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.function = function;
         this.companyName = companyName;
         this.realisation = realisation;
         this.id=id;
+        this.user=user;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getId() {

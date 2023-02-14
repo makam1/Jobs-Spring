@@ -14,11 +14,13 @@ public class ResumeDTO {
         private CertificationEntity certificats;
         private ExperienceEntity experiences;
         private HobbiesEntity hobbies;
+        private String user;
+
 
     public ResumeDTO() {
     }
 
-    public ResumeDTO(String id, Date dateOfBirth, String title, LangageEntity languages, FormationEntity formations, SkillsEntity skills, CertificationEntity certificats, ExperienceEntity experiences, HobbiesEntity hobbies) {
+    public ResumeDTO(String user,String id, Date dateOfBirth, String title, LangageEntity languages, FormationEntity formations, SkillsEntity skills, CertificationEntity certificats, ExperienceEntity experiences, HobbiesEntity hobbies) {
             this.dateOfBirth = dateOfBirth;
             this.title = title;
             this.languages = languages;
@@ -28,7 +30,16 @@ public class ResumeDTO {
             this.experiences = experiences;
             this.hobbies = hobbies;
             this.id=id;
+            this.user=user;
         }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getId() {
         return id;
