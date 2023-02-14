@@ -31,8 +31,8 @@ public class LangageServiceImpl implements LangageService{
         this.langageService = langageService;
     }
     @Override
-    public List<LangageEntity> getLangages() {
-        return langageRepository.findAll();
+    public List<LangageEntity> getLangages(String user) {
+        return langageRepository.findByUser(user);
     }
 
     @Override

@@ -9,10 +9,22 @@ public class LangageEntity {
      private String name;
      private LangageLevel level;
 
-    public LangageEntity(String id, String name, LangageLevel level) {
+     private String user;
+
+
+    public LangageEntity(String id, String name, LangageLevel level, String user) {
         this.id = id;
         this.name = name;
         this.level = level;
+        this.user=user;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getId() {

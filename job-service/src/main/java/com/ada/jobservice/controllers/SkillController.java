@@ -22,12 +22,12 @@ public class SkillController {
     public SkillsDTO createSkill(@RequestBody SkillsDTO skill) {
         return skillService.createSkill(skill);
     }
-    @GetMapping("/skills")
-    public List<SkillsEntity> getSkills() {
-        return skillService.getSkills();
+    @GetMapping("/skills/{user}")
+    public List<SkillsEntity> getSkills(@PathVariable String user) {
+        return skillService.getSkills(user);
     }
 
-    @GetMapping("/skills/{id}")
+    @GetMapping("/skill/{id}")
     public SkillsEntity getSkill(@PathVariable String id) {
         return skillService.getSkillById(id);
     }

@@ -8,7 +8,7 @@ import com.ada.jobservice.entities.SkillsEntity;
 import java.util.List;
 
 public interface SkillService {
-    public List<SkillsEntity> getSkills();
+    public List<SkillsEntity> getSkills(String user);
 
     public SkillsEntity getSkillById(String id);
 

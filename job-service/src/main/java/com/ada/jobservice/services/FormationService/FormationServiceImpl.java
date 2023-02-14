@@ -27,8 +27,8 @@ public class FormationServiceImpl implements Formationservice {
         this.formationService = formationService;
     }
     @Override
-    public List<FormationEntity> getFormations() {
-        return formationRepository.findAll();
+    public List<FormationEntity> getFormations(String user) {
+        return formationRepository.findByUser(user);
     }
     @Override
     public FormationEntity getFormationById(String id) {

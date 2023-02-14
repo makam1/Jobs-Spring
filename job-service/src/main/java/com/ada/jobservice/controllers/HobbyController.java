@@ -21,12 +21,12 @@ public class HobbyController {
     public HobbyDTO createHobby(@RequestBody HobbyDTO hobby) {
         return hobbyService.createHobby(hobby);
     }
-    @GetMapping("/hobbies")
-    public List<HobbiesEntity> getHobbies() {
-        return hobbyService.getHobbies();
+    @GetMapping("/hobbies/{user}")
+    public List<HobbiesEntity> getHobbies(@PathVariable String user) {
+        return hobbyService.getHobbies(user);
     }
 
-    @GetMapping("/hobbies/{id}")
+    @GetMapping("/hobbie/{id}")
     public HobbiesEntity getHobby(@PathVariable String id) {
         return hobbyService.getHobbyById(id);
     }

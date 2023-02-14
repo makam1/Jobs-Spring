@@ -26,8 +26,8 @@ public class ExperienceServiceImpl implements ExperienceService{
         this.experienceService = experienceService;
     }
     @Override
-    public List<ExperienceEntity> getExperiences() {
-        return experienceRepository.findAll();
+    public List<ExperienceEntity> getExperiences(String user) {
+        return experienceRepository.findByUser(user);
     }
     @Override
     public ExperienceEntity getExperienceById(String id) {

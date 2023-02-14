@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Formationservice {
 
-    public List<FormationEntity> getFormations();
+    public List<FormationEntity> getFormations(String user);
 
     public FormationEntity getFormationById(String id);
 

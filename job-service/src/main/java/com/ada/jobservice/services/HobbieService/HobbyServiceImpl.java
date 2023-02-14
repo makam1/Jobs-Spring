@@ -12,6 +12,8 @@ import com.ada.jobservice.services.ExperienceService.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +32,8 @@ public class HobbyServiceImpl implements HobbyService{
         this.hobbyService = hobbyService;
     }
     @Override
-    public List<HobbiesEntity> getHobbies() {
-        return hobbyRepository.findAll();
+    public List<HobbiesEntity> getHobbies(String user) {
+        return hobbyRepository.findByUser(user);
     }
 
     @Override

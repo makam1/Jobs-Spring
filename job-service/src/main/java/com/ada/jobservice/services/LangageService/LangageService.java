@@ -8,7 +8,7 @@ import com.ada.jobservice.entities.LangageEntity;
 import java.util.List;
 
 public interface LangageService {
-    public List<LangageEntity> getLangages();
+    public List<LangageEntity> getLangages(String user);
 
     public LangageEntity getLangageById(String id);
 

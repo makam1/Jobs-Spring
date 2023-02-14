@@ -9,17 +9,27 @@ public class ExperienceDTO {
     private String function;
     private String companyName;
     private String realisation;
+    private String user;
 
-    public ExperienceDTO(String id, Date startDate, Date endDate, String function, String companyName, String realisation) {
+    public ExperienceDTO(String user,String id, Date startDate, Date endDate, String function, String companyName, String realisation) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.function = function;
         this.companyName = companyName;
         this.realisation = realisation;
         this.id=id;
+        this.user=user;
     }
 
     public ExperienceDTO() {
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getId() {

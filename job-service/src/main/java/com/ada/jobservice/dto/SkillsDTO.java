@@ -5,10 +5,21 @@ public class SkillsDTO {
     private String name;
     private Integer level;
 
-    public SkillsDTO(String id, String name, Integer level) {
+    private String user;
+
+
+    public SkillsDTO(String id, String name, Integer level, String user) {
         this.id = id;
         this.name = name;
         this.level = level;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public SkillsDTO() {
