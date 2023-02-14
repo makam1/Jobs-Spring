@@ -4,11 +4,12 @@ import com.ada.jobservice.dto.FormationDTO;
 import com.ada.jobservice.dto.HobbyDTO;
 import com.ada.jobservice.entities.FormationEntity;
 import com.ada.jobservice.entities.HobbiesEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 public interface HobbyService {
-    public List<HobbiesEntity> getHobbies();
+    public List<HobbiesEntity> getHobbies(String user);
 
     public HobbiesEntity getHobbyById(String id);
 

@@ -30,8 +30,8 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public List<SkillsEntity> getSkills() {
-        return skillRepository.findAll();
+    public List<SkillsEntity> getSkills(String user) {
+        return skillRepository.findByUser(user);
     }
 
     @Override

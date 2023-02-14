@@ -15,8 +15,9 @@ public class FormationEntity {
     private  String schoolCity;
     private Date startDate;
     private Date endDate;
+    private String user;
 
-    public FormationEntity(String id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
+    public FormationEntity(String user,String id, String degree, String name, String schoolName, String schoolCity, Date startDate, Date endDate) {
         this.id = id;
         this.degree = degree;
         this.name = name;
@@ -24,6 +25,15 @@ public class FormationEntity {
         this.schoolCity = schoolCity;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.user=user;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getId() {

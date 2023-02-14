@@ -8,10 +8,22 @@ public class SkillsEntity {
     private String name;
     private Integer level;
 
-    public SkillsEntity(String id, String name, Integer level) {
+    private String user;
+
+
+    public SkillsEntity(String id, String name, Integer level, String user) {
         this.id = id;
         this.name = name;
         this.level = level;
+        this.user= user;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getId() {

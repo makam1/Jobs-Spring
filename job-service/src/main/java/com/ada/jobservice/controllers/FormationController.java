@@ -26,12 +26,12 @@ public class FormationController {
         return formationService.createFormation(formation);
     }
 
-    @GetMapping("/formations")
-    public List<FormationEntity> getFormation() {
-        return formationService.getFormations();
+    @GetMapping("/formations/{user}")
+    public List<FormationEntity> getFormations(@PathVariable String user) {
+        return formationService.getFormations(user);
     }
 
-    @GetMapping("/formations/{id}")
+    @GetMapping("/formation/{id}")
     public FormationEntity getFormation(@PathVariable String id) {
         return formationService.getFormationById(id);
     }
